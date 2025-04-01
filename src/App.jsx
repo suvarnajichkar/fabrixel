@@ -4,7 +4,7 @@ import Spinner from "./Components/Spinner";
 import Login from "./Components/Login";
 import Dashboard from "./Components/Dashboard";
 import Settings from "./Components/Settings";
-import Registration from "./Components/Registration"; // Import the Registration component
+import Registration from "./Components/Registration.jsx"; // Import the Registration component
 
 const App = () => {
   return (
