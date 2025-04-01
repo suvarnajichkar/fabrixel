@@ -4,17 +4,17 @@ import Spinner from "./Components/Spinner";
 import Login from "./Components/Login";
 import Dashboard from "./Components/Dashboard";
 import Settings from "./Components/Settings";
-import Registration from "./Components/registration"; // Import the Registration component
+import Registration from "./Components/Registration"; // Import the Registration component
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/fabrixel/"> {/* Ensure this is added */}
       <Routes>
         <Route path="/" element={<Spinner />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/settings" element={<Settings />} />
-        <Route path="/registration" element={<Registration />} /> {/* Add this route */}
+        <Route path="/registration" element={<Registration />} />
       </Routes>
     </Router>
   );
