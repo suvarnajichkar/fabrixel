@@ -1,49 +1,68 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Settings = () => {
   const [url, setUrl] = useState(localStorage.getItem("serverUrl") || "");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const isValidFabrixcelUrl = (url) => {
+  useEffect(() => {
+    console.log("Stored Server URL:", url); // Debugging log
+  }, []);
+
+  const isValidFrappeUrl = (url) => {
     const pattern = /^https?:\/\/[\w.-]+(:\d+)?\/?$/;
     return pattern.test(url);
   };
 
   const handleInputChange = (event) => {
     setUrl(event.target.value);
+    setError("");
   };
 
   const verifyUrl = async () => {
     try {
       const formattedUrl = url.trim().replace(/\/$/, ""); // Remove trailing slash
-      if (!isValidFabrixcelUrl(formattedUrl)) {
-        throw new Error("Invalid server URL format!");
+      if (!isValidFrappeUrl(formattedUrl)) {
+        throw new Error("Invalid Frappe server URL format!");
       }
 
-      const response = await fetch(`${formattedUrl}/api/method/ping`);
+      setLoading(true);
+
+      console.log("Verifying Frappe URL:", formattedUrl); // Debugging log
+
+      const response = await fetch(`${formattedUrl}/api/method/ping`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
       if (!response.ok) {
-        throw new Error("Server not reachable!");
+        throw new Error(`Server not reachable! Status: ${response.status}`);
       }
 
+      console.log("Server response:", await response.json()); // Debugging log
       return true;
     } catch (err) {
       console.error("URL verification failed:", err);
       return false;
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleSave = async () => {
     if (!url.trim()) {
-      setError("Please enter a valid server URL!");
+      setError("Please enter a valid Frappe server URL!");
       return;
     }
 
     const formattedUrl = url.trim().replace(/\/$/, "");
 
-    if (!isValidFabrixcelUrl(formattedUrl)) {
-      setError("Invalid URL! Please enter a correct Fabrixcel ERP URL.");
+    if (!isValidFrappeUrl(formattedUrl)) {
+      setError("Invalid URL! Please enter a correct Frappe ERP URL.");
       return;
     }
 
@@ -54,7 +73,7 @@ const Settings = () => {
     }
 
     localStorage.setItem("serverUrl", formattedUrl);
-    alert("Server URL saved successfully!");
+    alert("Frappe Server URL saved successfully!");
     navigate("/login");
   };
 
@@ -72,11 +91,11 @@ const Settings = () => {
         </div>
         <div className="p-4">
           <label className="block mb-2 text-sm text-gray-600 uppercase">
-            Server URL
+            Frappe Server URL
           </label>
           <input
             type="text"
-            placeholder="Enter Fabrixcel ERP URL"
+            placeholder="Enter Frappe ERP URL"
             className="w-full p-2 mb-3 border border-gray-300 rounded-lg box-border"
             value={url}
             onChange={handleInputChange}
@@ -85,8 +104,9 @@ const Settings = () => {
           <button
             className="w-full p-2 bg-blue-600 text-white rounded-lg text-base cursor-pointer hover:bg-blue-700 transition-colors mt-3"
             onClick={handleSave}
+            disabled={loading}
           >
-            Save
+            {loading ? "Verifying..." : "Save"}
           </button>
         </div>
       </div>
