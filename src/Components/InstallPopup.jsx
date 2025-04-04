@@ -4,21 +4,21 @@ import logo from "/logo192.png";
 export default function InstallPopup() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
-  const [appInfo, setAppInfo] = useState({ name: "Fabrixel ", description: "Fabrixel Web App" });
+  const [appInfo, setAppInfo] = useState({ name: ".........", description: "Fabrixel Web App" });
 
-  useEffect(() => {
-    fetch("/fabrixel/manifest.webmanifest") // ✅ Corrected path for GitHub Pages
-      .then((response) => {
-        console.log("Fetching manifest.json:", response);
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Manifest Data:", data);
-        setAppInfo({ name: data.name, description: data.description });
-      })
-      .catch((error) => console.error("Manifest fetch error:", error));
-  }, []);
-  
+ useEffect(() => {
+  fetch("/fabrixel/manifest.webmanifest") 
+    .then((response) => {
+      console.log("Fetching manifest.json:", response);
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Manifest Data:", data);
+      setAppInfo({ name: data.name, description: data.description });
+    })
+    .catch((error) => console.error("Manifest fetch error:", error));
+}, []);
+
 
   const handleInstall = async () => {
     if (!deferredPrompt) return;

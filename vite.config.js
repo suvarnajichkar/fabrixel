@@ -17,7 +17,7 @@ export default defineConfig({
       manifest: {
         name: 'Fabrixel App',
         short_name: 'Fabrixel',
-        description: 'Get app for easy to access',
+        description: 'Fabrixel Web App',
         theme_color: '#ffffff',
         background_color: '#ffffff',
         display: 'standalone',
