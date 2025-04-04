@@ -25,23 +25,38 @@ export default defineConfig({
         start_url: '/fabrixel/',
         icons: [
           {
-            src: 'logo192.png',
+            src: "logo192.png",
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: 'logo512.png',
+            src: "logo512.png",
             sizes: '512x512',
             type: 'image/png',
           },
           {
-            src: 'logo512.png',
+            src:  "logo512.png",
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable',
           },
         ],
+        screenshots: [
+          {
+            src: "pwa1screen-desk (1).png",
+            sizes: "1280x720",
+            type: "image/png",
+            form_factor: "wide"
+          },
+          {
+            src: "pwa1screen-mob (2).png",
+            sizes: "720x1280",
+            type: "image/png"
+          }
+        ]
       },
+
+      
     }),
   ],
   base: '/fabrixel/',
