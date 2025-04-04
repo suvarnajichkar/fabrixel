@@ -5,11 +5,13 @@ import Login from "./Components/Login";
 import Dashboard from "./Components/Dashboard";
 import Settings from "./Components/Settings";
 import Registration from "./Components/Registration.jsx"; // Import the Registration component
+import InstallButton from "./Components/InstallButton";
+
 
 const App = () => {
   return (
     <Router basename="/fabrixel/">
-        <InstallButtonn />
+        <InstallButton />
         {/* Ensure this is added */}
       <Routes>
         <Route path="/" element={<Spinner />} />
