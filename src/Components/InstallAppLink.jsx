@@ -17,7 +17,27 @@ export default function InstallAppLink() {
     };
   }, []);
 
+  const requestNotificationPermission = async () => {
+    if (Notification.permission === "granted") {
+      console.log("🔔 Notification permission already granted");
+      return true;
+    }
+    if (Notification.permission === "denied") {
+      alert("Please enable notifications in browser settings.");
+      return false;
+    }
+
+    const permission = await Notification.requestPermission();
+    return permission === "granted";
+  };
+
   const handleInstall = async () => {
+    const isNotificationAllowed = await requestNotificationPermission();
+    if (!isNotificationAllowed) {
+      alert("You need to allow notifications to install the app.");
+      return;
+    }
+
     if (!deferredPrompt) {
       alert("Install option is not available right now.");
       return;
