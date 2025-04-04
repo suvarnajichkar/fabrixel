@@ -4,21 +4,34 @@ import logo from "/logo192.png";
 export default function InstallPopup() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
-  const [appInfo, setAppInfo] = useState({ name: ".........", description: "Fabrixel Web App" });
+  const [appInfo, setAppInfo] = useState({ name: "Loading...", description: "Fetching details..." });
 
- useEffect(() => {
-  fetch("/fabrixel/manifest.webmanifest") 
-    .then((response) => {
-      console.log("Fetching manifest.json:", response);
-      return response.json();
-    })
-    .then((data) => {
-      console.log("Manifest Data:", data);
-      setAppInfo({ name: data.name, description: data.description });
-    })
-    .catch((error) => console.error("Manifest fetch error:", error));
-}, []);
+  useEffect(() => {
+   
+    fetch("/manifest.json")
+      .then((response) => {
+        console.log("Fetching manifest.json:", response);
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Manifest Data:", data);
+        setAppInfo({ name: data.name, description: data.description });
+      })
+      .catch((error) => console.error("Manifest fetch error:", error));
 
+   
+    const handleBeforeInstallPrompt = (event) => {
+      event.preventDefault();
+      setDeferredPrompt(event);
+      setShowPopup(true);
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    };
+  }, []);
 
   const handleInstall = async () => {
     if (!deferredPrompt) return;
@@ -33,7 +46,7 @@ export default function InstallPopup() {
   };
 
   return showPopup ? (
-    <div className="fixed inset-0 flex items-start justify-center bg-black/50">
+    <div className="fixed inset-0 flex items-center justify-center bg-black/50">
       <div className="bg-white rounded-lg shadow-lg p-6 w-80 text-center">
       
         <img src={logo} alt="App Logo" className="w-14 h-14 mx-auto mb-3" />
