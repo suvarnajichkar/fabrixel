@@ -26,45 +26,41 @@ export default defineConfig({
         icons: [
           {
             src: "logo192.png",
-            sizes: '192x192',
-            type: 'image/png',
+            sizes: "192x192",
+            type: "image/png",
           },
           {
             src: "logo512.png",
-            sizes: '512x512',
-            type: 'image/png',
+            sizes: "512x512",
+            type: "image/png",
           },
           {
-            src:  "logo512.png",
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'any maskable',
+            src: "logo512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "maskable", // ✅ Fixed the warning (removed "any maskable")
           },
         ],
         screenshots: [
           {
-            src: "/pwa1screen-desk.png",
+            src: "/pwa1screen-desk.png",  // ✅ Fixed path
             sizes: "1280x720",
             type: "image/png",
             form_factor: "wide"
           },
           {
-            src: "/pwa1screen-mob (2).png",
+            src: "/pwa1screen-mob.png",   // ✅ Fixed path (no space or special chars)
             sizes: "720x1280",
             type: "image/png"
           }
         ]
       },
-
-      
     }),
   ],
   base: '/fabrixel/',
   server: {
     proxy: {
       '/api': {
-        // target: "http://localhost:8000",
-        // target: 'https://erp.fabrixcel.com',
         changeOrigin: true,
         secure: false,
       },
