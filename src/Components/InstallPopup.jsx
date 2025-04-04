@@ -9,7 +9,7 @@ export default function InstallPopup() {
   }, []);
 
   return showPopup ? (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/50">
+    <div className="fixed inset-0 flex items-start justify-center bg-black/50">
       <div className="bg-white rounded-lg shadow-lg p-6 w-80 text-center">
         
         
