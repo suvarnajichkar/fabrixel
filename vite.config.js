@@ -37,8 +37,7 @@ export default defineConfig({
           {
             src: "logo512.png",
             sizes: "512x512",
-            type: "image/png",
-            purpose: "maskable", // ✅ Fixed the warning (removed "any maskable")
+            type: "image/png", // ✅ Fixed the warning (removed "any maskable")
           },
         ],
         screenshots: [
