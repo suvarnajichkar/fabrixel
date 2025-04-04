@@ -4,15 +4,17 @@ import Spinner from "./Components/Spinner";
 import Login from "./Components/Login";
 import Dashboard from "./Components/Dashboard";
 import Settings from "./Components/Settings";
-import Registration from "./Components/Registration.jsx"; // Import the Registration component
-
-
+import Registration from "./Components/Registration";
+import InstallAppLink from "./Components/InstallAppLink"; // ✅ Correct import
 
 const App = () => {
   return (
     <Router basename="/fabrixel/">
-      
-        {/* Ensure this is added */}
+      {/* Direct Link for Install */}
+      <div style={{ padding: "10px", textAlign: "center" }}>
+        <InstallAppLink />
+      </div>
+
       <Routes>
         <Route path="/" element={<Spinner />} />
         <Route path="/login" element={<Login />} />
