@@ -8,7 +8,7 @@ const Settings = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Stored Server URL:", url); // Debugging log
+    console.log("Stored Server URL:", url);
   }, []);
 
   const isValidFrappeUrl = (url) => {

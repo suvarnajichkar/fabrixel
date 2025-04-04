@@ -6,7 +6,7 @@ export default function InstallAppLink() {
   useEffect(() => {
     const handleBeforeInstallPrompt = (event) => {
       event.preventDefault();
-      console.log("✅ Install prompt event stored!");
+      console.log(" Install prompt event stored!");
       setDeferredPrompt(event);
     };
 
@@ -47,9 +47,9 @@ export default function InstallAppLink() {
     const result = await deferredPrompt.userChoice;
 
     if (result.outcome === "accepted") {
-      console.log("🎉 User installed the app!");
+      console.log("User installed the app!");
     } else {
-      console.log("❌ User dismissed install.");
+      console.log("User dismissed install.");
     }
 
     setDeferredPrompt(null);
@@ -61,7 +61,7 @@ export default function InstallAppLink() {
       onClick={handleInstall} 
       style={{ color: "blue", textDecoration: "underline", cursor: "pointer" }}
     >
-      📲 Install Fabrixel App
+       Install Fabrixel App
     </a>
   );
 }

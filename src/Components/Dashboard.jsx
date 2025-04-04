@@ -10,13 +10,13 @@ function Dashboard() {
   };
 
   const handleLogout = () => {
-    // Add any logout logic here (e.g., clearing tokens, session, etc.)
-    navigate("/login"); // Redirect to login page
+   
+    navigate("/login"); 
   };
 
   return (
     <div className="flex min-h-screen font-sans relative">
-      {/* Hamburger Menu Button */}
+      
       <div
         className="absolute top-2.5 left-2.5 z-[1000] cursor-pointer"
         onClick={toggleSidebar}
@@ -24,7 +24,7 @@ function Dashboard() {
         <div className="text-2xl">☰</div>
       </div>
 
-      {/* Sidebar */}
+      
       <div
         className={`fixed top-0 left-0 h-full bg-gray-100 border-r border-gray-200 transition-all duration-300 ease-in-out z-[1000] overflow-x-hidden ${
           isSidebarOpen ? "w-64" : "w-0"
@@ -58,7 +58,7 @@ function Dashboard() {
         </ul>
       </div>
 
-      {/* Main Content */}
+      
       <div
         className={`flex-1 flex flex-col transition-all duration-300 ${
           isSidebarOpen ? "md:ml-64" : "md:ml-16"

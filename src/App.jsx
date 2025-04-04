@@ -10,7 +10,6 @@ import InstallAppLink from "./Components/InstallAppLink"; // ✅ Correct import
 const App = () => {
   return (
     <Router basename="/fabrixel/">
-      {/* Direct Link for Install */}
       <div style={{ padding: "10px", textAlign: "center" }}>
         <InstallAppLink />
       </div>
