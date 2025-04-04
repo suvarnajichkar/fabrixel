@@ -42,17 +42,17 @@ export default defineConfig({
         ],
         screenshots: [
           {
-            src: "/pwa1screen-desk.png",  // ✅ Fixed path
+            src: "/fabrixel/pwa1screen-desk.png",  // ✅ Add "/fabrixel/"
             sizes: "1280x720",
             type: "image/png",
             form_factor: "wide"
           },
           {
-            src: "/pwa1screen-mob.png",   // ✅ Fixed path (no space or special chars)
+            src: "/fabrixel/pwa1screen-mob.png",  // ✅ Add "/fabrixel/"
             sizes: "720x1280",
             type: "image/png"
           }
-        ]
+        ]        
       },
     }),
   ],
