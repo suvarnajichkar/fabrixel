@@ -4,7 +4,7 @@ import logo from "/logo192.png";
 export default function InstallPopup() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
-  const [appInfo, setAppInfo] = useState({ name: "Loading...", description: "Fetching details..." });
+  const [appInfo, setAppInfo] = useState({ name: "Fabrixel App", description: "Fabrixel Web App" });
 
   useEffect(() => {
    
