@@ -43,7 +43,7 @@ export default defineConfig({
         ],
         screenshots: [
           {
-            src: "/pwa1screen-desk (1).png",
+            src: "/pwa1screen-desk.png",
             sizes: "1280x720",
             type: "image/png",
             form_factor: "wide"
