@@ -9,6 +9,7 @@ import Registration from "./Components/Registration.jsx"; // Import the Registra
 const App = () => {
   return (
     <Router basename="/fabrixel/">
+        <InstallButtonn />
         {/* Ensure this is added */}
       <Routes>
         <Route path="/" element={<Spinner />} />
