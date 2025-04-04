@@ -5,13 +5,13 @@ import Login from "./Components/Login";
 import Dashboard from "./Components/Dashboard";
 import Settings from "./Components/Settings";
 import Registration from "./Components/Registration";
-import InstallAppLink from "./Components/InstallAppLink"; // ✅ Correct import
+import InstallPopup from "./Components/InstallPopup"; // 
 
 const App = () => {
   return (
     <Router basename="/fabrixel/">
       <div style={{ padding: "10px", textAlign: "center" }}>
-        <InstallAppLink />
+        <InstallPopup />
       </div>
 
       <Routes>
