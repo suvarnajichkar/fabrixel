@@ -39,20 +39,7 @@ export default defineConfig({
             sizes: "512x512",
             type: "image/png", 
           },
-        ],
-        // screenshots: [
-        //   {
-        //     src: "/fabrixel/pwa1screen-desk.png",  // ✅ Add "/fabrixel/"
-        //     sizes: "1280x720",
-        //     type: "image/png",
-        //     form_factor: "wide"
-        //   },
-        //   {
-        //     src: "/fabrixel/pwa1screen-mob.png",  // ✅ Add "/fabrixel/"
-        //     sizes: "720x1280",
-        //     type: "image/png"
-        //   }
-        // ]        
+        ],   
       },
     }),
   ],
